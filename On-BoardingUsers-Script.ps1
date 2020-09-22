@@ -9,7 +9,7 @@
 		
 
 Function ExcelToCsv ($File) {
-    $myDir = "C:\Users\lkris01\Documents\Powershell Scripts\OnBoarding-OffBoarding"
+    $myDir = "C:\\\\\file.ext"
     $excelFile = "$myDir\" + $File + ".xlsx"
     $Excel = New-Object -ComObject Excel.Application
     $wb = $Excel.Workbooks.Open($excelFile)
@@ -20,10 +20,10 @@ Function ExcelToCsv ($File) {
     $Excel.Quit()
 }
 
-$FileName = "NewUserCSV"
+$FileName = "NName of new CSV file"
 ExcelToCsv -File $FileName
 
-$ImportedUsers = Import-Csv -Path 'C:\Users\lkris01\Documents\Powershell Scripts\OnBoarding-OffBoarding\NewUserCSV.csv'
+$ImportedUsers = Import-Csv -Path 'C:\text.csv'
 $Cred=Get-Credential 
 
 $NewUserGroup= $ImportedUsers | ForEach-Object {  New-ADUser `
@@ -42,14 +42,14 @@ $NewUserGroup= $ImportedUsers | ForEach-Object {  New-ADUser `
 		-EmailAddress $_.EmailAddress `
 		-Title $_.Title `
 		-ScriptPath 'logon.bat' `
-		-Path 'OU=Test Staff,OU=Staff,OU=Mill Steel,DC=millsteel,DC=local' ` 
+		-Path 'OU=,OU=,OU=,DC=,DC=' ` 
 		
 	Set-ADUser -Credential $Cred -Identity $_.SamAccountName -Replace @{msnpallowdialin=$True}}
 	
-$UserGroupAddon=Import-Csv -Path 'C:\Users\lkris01\Documents\Powershell Scripts\OnBoarding-OffBoarding\NewUserCSV.csv'| Select-Object -Property SamAccountName
-Add-ADGroupMember -Identity 'Company Millsteel' -Members $UserGroupAddon -Credential $Cred
-Add-ADGroupMember -Identity 'Mill Steel Staff' -Members $UserGroupAddon -Credential $Cred
-Add-ADGroupMember -Identity 'Mill Steel Staff Policy' -Members $UserGroupAddon -Credential $Cred
+$UserGroupAddon=Import-Csv -Path 'C:\NewUserCSV.csv'| Select-Object -Property SamAccountName
+Add-ADGroupMember -Identity 'GroupName' -Members $UserGroupAddon -Credential $Cred
+Add-ADGroupMember -Identity 'GroupName' -Members $UserGroupAddon -Credential $Cred
+Add-ADGroupMember -Identity 'GroupName' -Members $UserGroupAddon -Credential $Cred
 
 Clear-Host
 
