@@ -1,0 +1,8 @@
+  Author:Lenny
+  
+  #PowerShell Script + Task Scheduler
+  #Sends automated emails to groups within a set scope
+
+Send-MailMessage -From user.user@domain.com 
+-To 'Email Group','Recipient Email' 
+-Subject 'Anything you want' -SmtpServer mail.domain.com 
