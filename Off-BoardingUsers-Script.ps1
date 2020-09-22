@@ -12,7 +12,7 @@ $Creds=Get-Credential ""
 $User = Read-Host -Prompt 'Enter the 01 username of the employee to clean up'
 Get-ADPrincipalGroupMembership -Identity $User | select name -Skip 1 | foreach {Remove-ADGroupMember -Identity $_.name -Members $User -Confirm:$false -Credential $Creds}
 Disable-ADAccount -Identity $User -Credential $Creds
-Get-ADUser -Identity $User | Move-ADObject -TargetPath "OU=Disabled Users,DC=millsteel,DC=Local" -Credential $Creds
+Get-ADUser -Identity $User | Move-ADObject -TargetPath "OU=,DC=,DC=" -Credential $Creds
 
 Function New-RandomPassword { 
     [CmdletBinding()]
