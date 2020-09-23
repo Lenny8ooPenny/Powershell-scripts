@@ -1,13 +1,11 @@
-#Spectrometer Backup
+#Removes the oldest file in the directory and changes the newest file name to match its creation date. 
 
-#Remove the old Backup and rename the new "Temp" folder as the date it was created in. 
-
-#This rename the new Item to match the creation date.
-Get-ChildItem -Path '\\msfs1\millsteel\Teams\Support\Backups\Spectrometer\Test' | 
+#This rename's the new item to match the creation date.
+Get-ChildItem -Path '\\path of directory you want to change | 
 Sort-Object -Property LastWriteTime | Select-Object -Last 1 | Rename-Item -NewName {$_.CreationTime.toString("yyyy-MM-dd")} 
 
 #This deletes the last created Item. 
-Get-ChildItem -Path '\\msfs1\millsteel\Teams\Support\Backups\Spectrometer\Test' | 
+Get-ChildItem -Path '\\path of directory you want to change' | 
 Sort-Object -Property LastWriteTime | Select-Object -First 1 | Remove-Item -Recurse 
 
 Write-Host -Object 'PowerShell Window will close in 10 seconds!'
