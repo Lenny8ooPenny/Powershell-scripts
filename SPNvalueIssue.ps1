@@ -1,0 +1,3 @@
+#"The operation failed because the SPN value provided for addition/modification is not unique forest-wide"
+#Powershell commands get the SPN's for that machine. Then look up in AD and see if it has 2 names. Remove computer from domain and delete it then re add to domain. 
+Get-ADComputer -Filter {serviceprincipalname -like "actual computer name"} -Properties serviceprincipalname | select serviceprincipalname

@@ -1,0 +1,1 @@
+New-PSDrive -Name "F" -PSProvider FileSystem -Root \\msfs1\F -Persist 
