@@ -1,6 +1,6 @@
-$ServiceName = 'Service Name'
+$ServiceName = 'freeFTPdService'
 $arrService = Get-Service -Name $ServiceName
-$ServiceNameExe = 'C:\filepath\"application.exe"'
+$ServiceNameExe = 'C:\Program Files (x86)\freeFTPd\freeFTPdService.exe'
 while ($arrService.Status -ne 'Running')
 {
 
@@ -15,5 +15,3 @@ while ($arrService.Status -ne 'Running')
     }
 
 }
-Start-Sleep -S 5
-Exit
