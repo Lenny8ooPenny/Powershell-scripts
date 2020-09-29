@@ -1,4 +1,4 @@
-#SteelPro Daily Records 
+# Daily Records 
 
     #Gets most recent file, and renames it to the written date minues one day, saved as a CSV file type.
         Get-ChildItem -Path ('\\networkshare\xxxx') | Sort-Object -Property LastWriteTime | Select-Object -Last 1 | Rename-Item -NewName {$_.CreationTime.AddDays(-1).ToString("yyyy-MM-dd 'Name of file.csv'") } 
