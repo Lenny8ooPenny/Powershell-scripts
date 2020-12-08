@@ -1,5 +1,6 @@
-﻿<# New User Onboarding
-#>
+# New User Onboarding
+# For each different business, you must change the following lines: Ln128 - Company Name, Ln230 - Email domain name, Ln131 - Default Password, Ln132 - OU Path (where user ou is put)
+#Ln133 - Basic Default groups they need to be in, Ln 134 - IP Phone attribute (You may need to remove if not in use or modify if you use ###-###-#### instead of ####(last four of number))
 
 Add-Type -AssemblyName System.Windows.Forms
 [System.Windows.Forms.Application]::EnableVisualStyles()
